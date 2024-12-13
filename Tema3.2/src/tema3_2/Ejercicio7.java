@@ -27,13 +27,13 @@ public class Ejercicio7 {
 		palabraBuscar = reader.nextLine();
 		
 		// Llamamos a la funcion y almacenamos su resultado
-		numeroVeces = numeroVeces(frase);
+		numeroVeces = numeroVeces(frase, palabraBuscar);
 		
 		// Salto de linea
 		System.out.println();
 		
 		// Mostramos el resultado
-		System.out.println("La palabra " + palabraBuscar + " aparece " + numeroVeces + " en tu frase");
+		System.out.println("Veces que aparece la palabra " + palabraBuscar + " en tu frase -> " + numeroVeces);
 		
 		// Cerramos el scanner
 		reader.close();
@@ -41,12 +41,25 @@ public class Ejercicio7 {
 		
 	}
 	
-	static int numeroVeces(String fraseEntrada) {
+	static int numeroVeces(String fraseEntrada, String palabra) {
 		
+		// Creamos la variable palabraNumeroVeces para almacenar el numero de veces que aparece la palabra en la frase
 		int palabraNumeroVeces = 0;
 		
+		// Creamos la variable posicion par ir controlando la posicion en la busqueda
+		int posicion = fraseEntrada.indexOf(palabra);
 		
+		// Mientras que encuentre la palabra
+		while (posicion != -1) {
+			
+			// Incrementamos palabraNumeroVeces
+			palabraNumeroVeces++;
+			
+			// Volvemos a buscar partiendo desde la siguiente posicion
+			posicion = fraseEntrada.indexOf(palabra, posicion + 1);
+		}
 		
+		// Devolvemos el numero de veces que aparece la palabra en la frase
 		return palabraNumeroVeces;
 	}
 
